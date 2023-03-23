@@ -1,0 +1,17 @@
+<h1>Valorant Agents:</h1>
+<label for="searchQuery">Search by agent name:</label>
+<input type="text" id="searchQuery" [(ngModel)]="searchQuery" />
+<button type="button" (click)="searchAgents()">Search</button>
+<div *ngIf="agents">
+  <h2>Search results:</h2>
+</div>
+<ul>
+  <li *ngFor="let agent of agents">
+    <a [routerLink]="['/agents', agent.uuid]">
+      <div *ngIf="agent.isPlayableCharacter">
+        {{ agent.displayName }} {{ agent.role?.displayName }}
+        <img [src]="agent.killfeedPortrait" />
+      </div>
+    </a>
+  </li>
+</ul>
